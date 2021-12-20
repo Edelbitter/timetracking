@@ -1,0 +1,16 @@
+﻿<div class="flexContainer">
+    <div class="hugeButton">
+    @if (!isRunning)
+    {
+       <span class="oi oi-media-play bigIcon"></span>
+    }
+    @if (isRunning)
+        {
+            <span class="oi oi-media-pause bigIcon"></span>
+        }
+    </div>
+</div>
+
+@code {
+    private bool isRunning = true;
+}

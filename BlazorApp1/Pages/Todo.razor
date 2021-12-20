@@ -1,6 +1,5 @@
 ﻿@page "/Todo"
 @using BlazorApp1.Models
-@using MatBlazor
 
 <PageTitle>Todo</PageTitle>
 <h3>Todo</h3>
@@ -10,12 +9,11 @@
     {
         <li>
             <span>@todo.Title</span>
-            <MatCheckbox @bind-Value="@todo.IsDone" Label="abc"></MatCheckbox>
         </li>
     }
 </ul>
 <input placeholder="Something todo" @bind="_newTodo"/>
-<button @onclick="AddTodo">Add todo</button>
+<button @onClick="AddTodo">Add todo</button>
 
 @code {
     private List<TodoItem> todos = new List<TodoItem>();

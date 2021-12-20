@@ -1,0 +1,35 @@
+﻿.flexContainer {
+    font-size: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hugeButton {
+    flex: 1 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 15px;
+    background-color: cornflowerblue;
+    color: white;
+    height: 20rem;
+    max-width: 40rem;
+}
+
+.bigIcon{
+    font-size: 300px;
+}
+
+@media all and (max-width: 500px) {
+.hugeButton{
+    height:10rem;
+}
+
+    .bigIcon {
+        font-size: 120px;
+    }
+}
+
+
+
