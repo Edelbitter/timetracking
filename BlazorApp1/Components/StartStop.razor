@@ -1,4 +1,7 @@
-﻿<div class="flexContainer">
+﻿@using System.Net.Http
+@inject HttpClient http
+
+<div class="flexContainer">
     <div class="hugeButton" @onclick="ToggleRun">
         @if (!isRunning)
         {
@@ -14,9 +17,11 @@
 @code {
     private bool isRunning = true;
 
-    private void ToggleRun()
+    private async Task ToggleRun()
     {
-        Thread.Sleep(250);
+        await http.PostAsync("Recording/start", null);
+        Console.WriteLine(http.BaseAddress);
         isRunning = !isRunning;
+
     }
 }

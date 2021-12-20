@@ -5,7 +5,12 @@
       "ProjectGuid": "1d692f9c-4590-470d-8c3f-4f61ddd974b5",
       "DisplayName": "BlazorApp1",
       "ColorIndex": 0
+    },
+    "19c3f40e-db4d-408d-b981-d36fc9a06ac7": {
+      "ProjectGuid": "19c3f40e-db4d-408d-b981-d36fc9a06ac7",
+      "DisplayName": "TimeTrackingBE",
+      "ColorIndex": 1
     }
   },
-  "NextColorIndex": 1
+  "NextColorIndex": 2
 }
