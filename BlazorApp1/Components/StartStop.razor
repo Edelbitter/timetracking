@@ -1,10 +1,10 @@
 ﻿<div class="flexContainer">
-    <div class="hugeButton">
-    @if (!isRunning)
-    {
-       <span class="oi oi-media-play bigIcon"></span>
-    }
-    @if (isRunning)
+    <div class="hugeButton" @onclick="ToggleRun">
+        @if (!isRunning)
+        {
+            <span class="oi oi-media-play bigIcon"></span>
+        }
+        @if (isRunning)
         {
             <span class="oi oi-media-pause bigIcon"></span>
         }
@@ -13,4 +13,10 @@
 
 @code {
     private bool isRunning = true;
+
+    private void ToggleRun()
+    {
+        Thread.Sleep(250);
+        isRunning = !isRunning;
+    }
 }
