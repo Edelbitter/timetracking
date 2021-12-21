@@ -8,6 +8,11 @@ namespace TimeTrackingBE.Services
         private static string timeFilePath = "time";
         private static string stateFilePath = "running";
 
+        public bool CheckRunning()
+        {
+            return File.Exists(stateFilePath);
+        }
+
         public void StartRecording()
         {
             if (File.Exists(stateFilePath))

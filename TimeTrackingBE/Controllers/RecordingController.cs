@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Common.Models;
+
+using Microsoft.AspNetCore.Mvc;
 using TimeTrackingBE.Services.Interfaces;
 
 namespace TimeTrackingBE.Controllers
@@ -42,6 +44,13 @@ namespace TimeTrackingBE.Controllers
             }
 
             return Ok();
+        }
+
+        [HttpGet("check")]
+        public IActionResult CheckRunning()
+        {
+            var isRunning = fileService.CheckRunning();
+            return Ok(new RunningCheckResult(){IsRunning= isRunning});
         }
     }
 }

@@ -5,7 +5,9 @@ VisualStudioVersion = 17.0.32014.148
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorApp1", "BlazorApp1\BlazorApp1.csproj", "{1D692F9C-4590-470D-8C3F-4F61DDD974B5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimeTrackingBE", "TimeTrackingBE\TimeTrackingBE.csproj", "{19C3F40E-DB4D-408D-B981-D36FC9A06AC7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TimeTrackingBE", "TimeTrackingBE\TimeTrackingBE.csproj", "{19C3F40E-DB4D-408D-B981-D36FC9A06AC7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common", "Common\Common.csproj", "{6CCB6BB7-ABD4-48E7-A4C1-CB494BA895CB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{19C3F40E-DB4D-408D-B981-D36FC9A06AC7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{19C3F40E-DB4D-408D-B981-D36FC9A06AC7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{19C3F40E-DB4D-408D-B981-D36FC9A06AC7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6CCB6BB7-ABD4-48E7-A4C1-CB494BA895CB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6CCB6BB7-ABD4-48E7-A4C1-CB494BA895CB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6CCB6BB7-ABD4-48E7-A4C1-CB494BA895CB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6CCB6BB7-ABD4-48E7-A4C1-CB494BA895CB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

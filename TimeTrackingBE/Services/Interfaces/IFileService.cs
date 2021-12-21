@@ -4,5 +4,6 @@
     {
         void StartRecording();
         void StopRecording();
+        bool CheckRunning();
     }
 }
