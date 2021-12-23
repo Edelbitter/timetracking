@@ -5,8 +5,15 @@ namespace TimeTrackingBE.Services
 {
     public class FileService : IFileService
     {
-        private static string timeFilePath = "time";
+        private static string timeFilePath;
         private static string stateFilePath = "running";
+
+        public FileService()
+        {
+            CultureInfo myCi = new CultureInfo("de-DE");
+            Calendar cal = myCi.Calendar;
+            timeFilePath = cal.GetWeekOfYear(DateTime.Now, CalendarWeekRule.FirstDay, DayOfWeek.Monday).ToString();
+        }
 
         public bool CheckRunning()
         {
@@ -23,7 +30,7 @@ namespace TimeTrackingBE.Services
             File.Create(stateFilePath).Close();
 
             using var fileStream = File.AppendText(timeFilePath);
-            fileStream.WriteLine($"start {DateTime.Now.ToString("G",CultureInfo.GetCultureInfo("de-DE"))}");
+            fileStream.WriteLine($"start {DateTime.Now.ToString("s", CultureInfo.GetCultureInfo("de-DE"))}");
             fileStream.Close();
         }
 
@@ -37,8 +44,23 @@ namespace TimeTrackingBE.Services
             File.Delete(stateFilePath);
 
             using var fileStream = File.AppendText(timeFilePath);
-            fileStream.WriteLine($"stop {DateTime.Now.ToString("G", CultureInfo.GetCultureInfo("de-DE"))}");
+            fileStream.WriteLine($"stop {DateTime.Now.ToString("s", CultureInfo.GetCultureInfo("de-DE"))}");
             fileStream.Close();
+        }
+
+        public async Task<List<string>> GetCurrentWeekLines()
+        {
+            using var fileStream = File.OpenText(timeFilePath);
+            var lines = new List<string>();
+            while (!fileStream.EndOfStream)
+            {
+                var line = await fileStream.ReadLineAsync();
+                if (!string.IsNullOrWhiteSpace(line))
+                    lines.Add(line);
+            }
+
+            return lines;
         }
     }
 }
+

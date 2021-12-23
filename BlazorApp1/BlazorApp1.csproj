@@ -16,4 +16,12 @@
       <ProjectReference Include="..\Common\Common.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <UpToDateCheckInput Remove="Pages\Statistics.razor" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <_ContentIncludedByDefault Remove="Pages\Statistics.razor" />
+    </ItemGroup>
+
 </Project>

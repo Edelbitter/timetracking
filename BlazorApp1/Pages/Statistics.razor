@@ -1,0 +1,61 @@
+﻿@page "/statistics"
+
+@using System.Net.Http
+@using System.Net.Http.Json
+@using Common.Models
+@inject HttpClient http
+
+
+<h3>Statistics</h3>
+
+<table class="table">
+    <thead>
+    <tr>
+        <th scope="col"><span class="oi oi-clock"></span></th>
+        <th scope="col">Montag</th>
+        <th scope="col">Dienstag</th>
+        <th scope="col">Mittwoch</th>
+        <th scope="col">Donnerstag</th>
+        <th scope="col">Freitag</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <th scope="row">Geschafft</th>
+        @foreach (var d in weekStats.Done)
+        {
+            <td>@d</td>
+        }
+    </tr>
+    <tr>
+        <th scope="row">Zwischensumme</th>
+        @foreach (var d in weekStats.DaySum)
+        {
+            <td>@d</td>
+        }
+    </tr>
+    <tr>
+        <th scope="row">Zwischenziel</th>
+        @foreach (var d in weekStats.DayTarget)
+        {
+            <td>@d</td>
+        }
+    </tr>
+    </tbody>
+</table>
+
+<div>Momentan Saldo</div>
+<div>@weekStats.CurrentSaldo</div>
+
+<div>Noch zu tun</div>
+<div>@weekStats.ToGo</div>
+
+
+@code {
+    private WeekStats weekStats;
+
+    protected override async Task OnInitializedAsync()
+    {
+        var res = await http.GetFromJsonAsync<WeekStats>("Statistics/week");
+    }
+}

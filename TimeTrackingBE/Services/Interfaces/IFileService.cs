@@ -5,5 +5,6 @@
         void StartRecording();
         void StopRecording();
         bool CheckRunning();
+        Task<List<string>> GetCurrentWeekLines();
     }
 }
