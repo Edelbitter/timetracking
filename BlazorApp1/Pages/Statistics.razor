@@ -24,31 +24,31 @@
         <th scope="row">Geschafft</th>
         @foreach (var d in weekStats.DonePerDay)
         {
-            <td>@d</td>
+            <td>@formatHours(d)</td>
         }
     </tr>
     <tr>
         <th scope="row">Zwischensumme</th>
         @foreach (var d in weekStats.SumDonePerDayUpToDay)
         {
-            <td>@d</td>
+            <td>@formatHours(d)</td>
         }
     </tr>
     <tr>
         <th scope="row">Zwischenziel</th>
         @foreach (var d in weekStats.SumDailyTargetUpToDay)
         {
-            <td>@d</td>
+            <td>@formatHours(d)</td>
         }
     </tr>
     </tbody>
 </table>
 
 <div>Momentan Saldo</div>
-<div>@weekStats.CurrentTotalDone</div>
+<div class="bigNumbers">@formatHours(weekStats.CurrentTotalDone)</div>
 
 <div>Noch zu tun</div>
-<div>@weekStats.ToGoPerWeek</div>
+<div>@formatHours(weekStats.ToGoPerWeek)</div>
 
 
 @code {
@@ -65,5 +65,14 @@
     {
         weekStats = await http.GetFromJsonAsync<WeekStats>("Statistics/currentweek");
         Console.WriteLine(weekStats);
+    }
+
+    private string formatHours(TimeSpan input)
+    {
+        int hours = input.Days * 24 + input.Hours;
+        string hoursString = hours< 10 ? $"0{hours.ToString()}" : hours.ToString();
+        int minutes = input.Minutes;
+        string minutesString = minutes < 10 ? $"0{minutes.ToString()}" : minutes.ToString();
+        return $"{hoursString}:{minutesString}";
     }
 }
