@@ -14,8 +14,8 @@ namespace TimeTrackingBE.Controllers
             statisticsService = ss;
         }
 
-        [HttpGet("week")]
-        public async Task<IActionResult> GetWeekAsync()
+        [HttpGet("currentweek")]
+        public async Task<IActionResult> GetCurrentWeekAsync()
         {
             var week =await statisticsService.GetCurrentWeekAsync();
             return Ok(week);

@@ -8,10 +8,10 @@ namespace Common.Models
 {
     public class WeekStats
     {
-        public List<TimeSpan> Done { get; set; }
-        public List<TimeSpan> DaySum { get; set; }
-        public List<TimeSpan> DayTarget { get; set; }
-        public TimeSpan CurrentSaldo { get; set; }
-        public TimeSpan ToGo { get; set; }
+        public List<TimeSpan> DonePerDay { get; set; }
+        public List<TimeSpan> SumDonePerDayUpToDay { get; set; }
+        public List<TimeSpan> SumDailyTargetUpToDay { get; set; }
+        public TimeSpan CurrentTotalDone { get; set; }
+        public TimeSpan ToGoPerWeek { get; set; }
     }
 }

@@ -52,6 +52,7 @@ namespace TimeTrackingBE.Services
         {
             using var fileStream = File.OpenText(timeFilePath);
             var lines = new List<string>();
+
             while (!fileStream.EndOfStream)
             {
                 var line = await fileStream.ReadLineAsync();

@@ -22,21 +22,21 @@
     <tbody>
     <tr>
         <th scope="row">Geschafft</th>
-        @foreach (var d in weekStats.Done)
+        @foreach (var d in weekStats.DonePerDay)
         {
             <td>@d</td>
         }
     </tr>
     <tr>
         <th scope="row">Zwischensumme</th>
-        @foreach (var d in weekStats.DaySum)
+        @foreach (var d in weekStats.SumDonePerDayUpToDay)
         {
             <td>@d</td>
         }
     </tr>
     <tr>
         <th scope="row">Zwischenziel</th>
-        @foreach (var d in weekStats.DayTarget)
+        @foreach (var d in weekStats.SumDailyTargetUpToDay)
         {
             <td>@d</td>
         }
@@ -45,17 +45,25 @@
 </table>
 
 <div>Momentan Saldo</div>
-<div>@weekStats.CurrentSaldo</div>
+<div>@weekStats.CurrentTotalDone</div>
 
 <div>Noch zu tun</div>
-<div>@weekStats.ToGo</div>
+<div>@weekStats.ToGoPerWeek</div>
 
 
 @code {
-    private WeekStats weekStats;
+    private WeekStats weekStats = new WeekStats()
+    {
+        DonePerDay = new List<TimeSpan>(),
+        SumDailyTargetUpToDay = new List<TimeSpan>(),
+        SumDonePerDayUpToDay = new List<TimeSpan>(),
+        CurrentTotalDone = TimeSpan.Zero,
+        ToGoPerWeek = TimeSpan.Zero
+    };
 
     protected override async Task OnInitializedAsync()
     {
-        var res = await http.GetFromJsonAsync<WeekStats>("Statistics/week");
+        weekStats = await http.GetFromJsonAsync<WeekStats>("Statistics/currentweek");
+        Console.WriteLine(weekStats);
     }
 }
