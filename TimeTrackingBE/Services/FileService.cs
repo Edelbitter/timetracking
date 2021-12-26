@@ -6,13 +6,14 @@ namespace TimeTrackingBE.Services
     public class FileService : IFileService
     {
         private static string timeFilePath;
-        private static string stateFilePath = "running";
+        private static string stateFilePath = "persistence/running";
 
         public FileService()
         {
+            Directory.CreateDirectory("persistence");
             CultureInfo myCi = new CultureInfo("de-DE");
             Calendar cal = myCi.Calendar;
-            timeFilePath = cal.GetWeekOfYear(DateTime.Now, CalendarWeekRule.FirstDay, DayOfWeek.Monday).ToString();
+            timeFilePath = $"persistence/{cal.GetWeekOfYear(DateTime.Now, CalendarWeekRule.FirstDay, DayOfWeek.Monday).ToString()}";
         }
 
         public bool CheckRunning()
