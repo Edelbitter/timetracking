@@ -28,5 +28,7 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
+Directory.CreateDirectory("persistence");
 
 app.Run();
+

@@ -2,12 +2,13 @@
 
 FROM mcr.microsoft.com/dotnet/aspnet:6.0 AS base
 WORKDIR /app
-EXPOSE 80
+#EXPOSE 80
 EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /src
 COPY ["TimeTrackingBE/TimeTrackingBE.csproj", "TimeTrackingBE/"]
+COPY ["Common/Common.csproj", "Common/"]
 RUN dotnet restore "TimeTrackingBE/TimeTrackingBE.csproj"
 COPY . .
 WORKDIR "/src/TimeTrackingBE"

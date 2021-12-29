@@ -10,7 +10,6 @@ namespace TimeTrackingBE.Services
 
         public FileService()
         {
-            Directory.CreateDirectory("persistence");
             CultureInfo myCi = new CultureInfo("de-DE");
             Calendar cal = myCi.Calendar;
             timeFilePath = $"persistence/{cal.GetWeekOfYear(DateTime.Now, CalendarWeekRule.FirstDay, DayOfWeek.Monday).ToString()}";
