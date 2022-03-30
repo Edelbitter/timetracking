@@ -9,7 +9,6 @@ jobs:
   build-fe:
 
     runs-on: ubuntu-latest
-
     steps:
     - uses: actions/checkout@v3
     - name: Build the frontend Docker image
