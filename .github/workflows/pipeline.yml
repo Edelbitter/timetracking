@@ -13,14 +13,14 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Build the frontend Docker image
-      run: docker build . --file ./BlazorApp1/Dockerfile --tag edelbitter/timetracking-fe:${{ github.ref_name }}
+      run: docker build . --file ./BlazorApp1/Dockerfile --tag ghcr.io/edelbitter/timetracking-fe:${{ github.ref_name }}
       
   build-be:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
       - name: build the backend Docker image
-        run: docker build . --file ./TimeTrackingBE/Dockerfile --tag edelbitter/timetracking-be:${{ github.ref_name }}
+        run: docker build . --file ./TimeTrackingBE/Dockerfile --tag ghcr.io/edelbitter/timetracking-be:${{ github.ref_name }}
         
   push-images:
      needs: [build-fe,build-be]
