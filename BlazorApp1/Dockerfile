@@ -13,7 +13,7 @@ RUN dotnet build "BlazorApp1.csproj" -c Release -o /app/build
 FROM build AS publish
 RUN dotnet publish "BlazorApp1.csproj" -c Release -o /app/publish
 
-FROM docker.io/nginx:alpine AS final
-WORKDIR "/usr/local/nginx/html"
+FROM docker.io/nginx:stable-alpine AS final
+WORKDIR "/usr/share/nginx/html"
 COPY --from=publish app/publish/wwwroot .
 COPY BlazorApp1/nginx.conf /etc/nginx/nginx.conf
