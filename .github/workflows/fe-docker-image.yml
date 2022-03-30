@@ -2,7 +2,7 @@ name: FE Docker Image CI
 
 on:
   push:
-    tags: [ release ]
+    tags: [ v** ]
 
 jobs:
 
@@ -13,20 +13,20 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Build the frontend Docker image
-      run: docker build . --file ./BlazorApp1/Dockerfile --tag reggina/timetracking-fe:github.ref_name
+      run: docker build . --file ./BlazorApp1/Dockerfile --tag reggina/timetracking-fe:${{ github.ref_name }}
       
   build-be:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
       - name: build the backend Docker image
-        run: docker build . --file ./TimeTrackingBE/Dockerfile --tag reggina/timetracking-be:github.ref_name
+        run: docker build . --file ./TimeTrackingBE/Dockerfile --tag reggina/timetracking-be:{{ github.ref_name }}
         
   push-images:
      needs: [build-fe,build-be]
      runs-on: ubuntu-latest
      steps:
        - name: push fe images to docker hub
-         run: docker push reggina/timetracking-fe:github.ref_name docker://docker.io/reggina/timetracking-fe
+         run: docker push reggina/timetracking-fe:{{ github.ref_name }} docker://docker.io/reggina/timetracking-fe
        - name: push be image to docker hub
-         run: docker push reggina/timetracking-be:github.ref_name docker://docker.io/reggina/timetracking-be
+         run: docker push reggina/timetracking-be:{{ github.ref_name }} docker://docker.io/reggina/timetracking-be
