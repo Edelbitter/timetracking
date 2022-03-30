@@ -20,7 +20,12 @@
       "ProjectGuid": "6ccb6bb7-abd4-48e7-a4c1-cb494ba895cb",
       "DisplayName": "Common",
       "ColorIndex": 2
+    },
+    "0d3df826-b064-4889-87d4-6528c6dc7635": {
+      "ProjectGuid": "0d3df826-b064-4889-87d4-6528c6dc7635",
+      "DisplayName": "k8s",
+      "ColorIndex": 3
     }
   },
-  "NextColorIndex": 3
+  "NextColorIndex": 4
 }

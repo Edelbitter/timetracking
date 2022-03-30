@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Pod
+metadata: 
+  name: backend
+spec: 
+  containers:
+    - name: backend
+      image: reggina/timetracking-be:1.0
+      ports:
+        - containerPort: 80
+      volumeMounts:
+        - mountPath: /persistence
+          name: persistence-volume
+  volumes: 
+    - name: persistence-volume
+      emptyDir: {}

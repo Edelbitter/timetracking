@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Pod
+metadata: 
+  name: frontend
+  labels:
+    app: fe
+spec: 
+  containers:
+    - name: frontend
+      image: reggina/timetracking-fe:2.0
+      ports:
+        - containerPort: 80

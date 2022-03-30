@@ -1,0 +1,11 @@
+﻿apiVersion: v1
+kind: Service
+metadata:
+  name: backend-clusterip
+spec:
+  type: ClusterIP
+  selector:
+    app: be
+  ports:
+    - port: 7119
+      targetPort: 80
