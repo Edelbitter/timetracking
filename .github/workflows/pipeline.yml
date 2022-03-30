@@ -37,6 +37,6 @@ jobs:
              password: ${{ secrets.GITHUB_TOKEN }}       
        
        - name: push fe images to docker hub
-         run: docker push edelbitter/timetracking-fe:${{ github.ref_name }} https://ghcr.io/edelbitter/timetracking-fe
+         run: docker push ghcr.io/edelbitter/timetracking-fe:${{ github.ref_name }}
        - name: push be image to docker hub
-         run: docker push edelbitter/timetracking-be:${{ github.ref_name }} https://ghcr.io/edelbitter/timetracking-be
+         run: docker push ghcr.io/edelbitter/timetracking-be:${{ github.ref_name }}
