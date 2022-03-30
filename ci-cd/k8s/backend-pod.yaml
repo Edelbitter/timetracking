@@ -5,7 +5,7 @@ metadata:
 spec: 
   containers:
     - name: backend
-      image: reggina/timetracking-be:1.0
+      image: ghcr.io/edelbitter/timetracking-be:v3.0
       ports:
         - containerPort: 80
       volumeMounts:

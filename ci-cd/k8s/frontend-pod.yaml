@@ -7,6 +7,6 @@ metadata:
 spec: 
   containers:
     - name: frontend
-      image: reggina/timetracking-fe:2.0
+      image: ghcr.io/edelbitter/timetracking-fe:v3.0
       ports:
         - containerPort: 80

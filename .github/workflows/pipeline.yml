@@ -11,33 +11,41 @@ jobs:
 
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
-    - name: Build the frontend Docker image
-      run: docker build . --file ./BlazorApp1/Dockerfile --tag ghcr.io/edelbitter/timetracking-fe:${{ github.ref_name }}
-             
+    
     - name: Log in to Docker Hub
       uses: docker/login-action@f054a8b539a109f9f41c372932f1ae047eff08c9
       with:
        registry: ghcr.io
        username: ${{ github.actor }}
-       password: ${{ secrets.GITHUB_TOKEN }}
-  
-    - name: push fe images to docker hub
-      run: docker push ghcr.io/edelbitter/timetracking-fe:${{ github.ref_name }}
+       password: ${{ secrets.GITHUB_TOKEN }}    
+
+    - name: Build and push frontend image
+      uses: docker/build-push-action@ad44023a93711e3deb337508980b4b5e9bcdc5dc
+      with:
+        context: .
+        push: true
+        file: ./BlazorApp1/Dockerfile
+        tags: ${{ github.ref_name }}
+        labels: ghcr.io/edelbitter/timetracking-fe
 
   build-and-push-be:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - name: build the backend Docker image
-        run: docker build . --file ./TimeTrackingBE/Dockerfile --tag ghcr.io/edelbitter/timetracking-be:${{ github.ref_name }}
-
+      - name: checkout repo
+        uses: actions/checkout@v3
+        
       - name: Log in to Docker Hub
         uses: docker/login-action@f054a8b539a109f9f41c372932f1ae047eff08c9
         with:
           registry: ghcr.io
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
-            
-      - name: push be image to docker hub
-        run: docker push ghcr.io/edelbitter/timetracking-be:${{ github.ref_name }}
+
+      - name: Build and push backend image
+        uses: docker/build-push-action@ad44023a93711e3deb337508980b4b5e9bcdc5dc
+        with:
+          context: .
+          push: true
+          file: ./TimeTrackingBE/Dockerfile
+          tags: ${{ github.ref_name }}
+          labels: ghcr.io/edelbitter/timetracking-be
