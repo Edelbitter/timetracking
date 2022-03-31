@@ -49,3 +49,26 @@ jobs:
           push: true
           file: ./TimeTrackingBE/Dockerfile
           tags: ghcr.io/edelbitter/timetracking-be:${{ github.ref_name }}
+          
+
+  test-ssh:
+    needs: [build-and-push-be,build-and-push-fe]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: copy files via scp
+        uses: appleboy/scp-action@master
+        with:
+          host: 51.158.164.26
+          username: root
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          source: "ci-cd/k8s/backend-pod.yaml,ci-cd/k8s/backend-svc.yaml,ci-cd/k8s/frontend-pod.yaml,ci-cd/k8s/frontend-svc.yaml"
+          target: "/usr/local/src"
+
+      - name: connect and kubectl apply
+        uses: appleboy/ssh-action@master
+        with:
+          host: 51.158.164.26
+          username: root
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          script: kubectl apply -f /usr/local/src
