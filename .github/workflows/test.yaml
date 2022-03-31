@@ -1,0 +1,18 @@
+﻿name: test CD
+
+on:
+  push:
+
+jobs:
+
+  test-ssh:
+
+    runs-on: ubuntu-latest
+    steps:
+      - name: connect
+        uses: appleboy/ssh-action@master
+        with: 
+          host: 51.158.164.26
+          username: root
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          script: ls -al
