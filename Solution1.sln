@@ -9,6 +9,15 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TimeTrackingBE", "TimeTrack
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Common", "Common\Common.csproj", "{6CCB6BB7-ABD4-48E7-A4C1-CB494BA895CB}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{D1A300CA-2914-4EA1-925D-ACDD2558822A}"
+	ProjectSection(SolutionItems) = preProject
+		ci-cd\k8s\backend-pod.yaml = ci-cd\k8s\backend-pod.yaml
+		ci-cd\k8s\backend-svc.yaml = ci-cd\k8s\backend-svc.yaml
+		ci-cd\k8s\frontend-pod.yaml = ci-cd\k8s\frontend-pod.yaml
+		ci-cd\k8s\frontend-svc.yaml = ci-cd\k8s\frontend-svc.yaml
+		ci-cd\k8s\ingress.yaml = ci-cd\k8s\ingress.yaml
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -30,8 +39,6 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(NestedProjects) = preSolution
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {6D5CDF01-5851-478A-9749-9A5EC753698D}
