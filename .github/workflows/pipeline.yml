@@ -62,7 +62,7 @@ jobs:
           host: 51.158.164.26
           username: root
           key: ${{ secrets.SSH_PRIVATE_KEY }}
-          source: "ci-cd/k8s/backend-pod.yaml,ci-cd/k8s/backend-svc.yaml,ci-cd/k8s/frontend-pod.yaml,ci-cd/k8s/frontend-svc.yaml"
+          source: "ci-cd/k8s/backend-pod.yaml,ci-cd/k8s/backend-svc.yaml,ci-cd/k8s/frontend-pod.yaml,ci-cd/k8s/frontend-svc.yaml,ci-cd/k8s/ingress.yaml"
           target: "/usr/local/src"
 
       - name: connect and kubectl apply
@@ -71,4 +71,4 @@ jobs:
           host: 51.158.164.26
           username: root
           key: ${{ secrets.SSH_PRIVATE_KEY }}
-          script: kubectl apply -f /usr/local/src
+          script: kubectl apply -f /usr/local/src/ci-cd/k8s

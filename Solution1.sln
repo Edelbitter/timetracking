@@ -16,6 +16,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		ci-cd\k8s\frontend-pod.yaml = ci-cd\k8s\frontend-pod.yaml
 		ci-cd\k8s\frontend-svc.yaml = ci-cd\k8s\frontend-svc.yaml
 		ci-cd\k8s\ingress.yaml = ci-cd\k8s\ingress.yaml
+		.github\workflows\pipeline.yml = .github\workflows\pipeline.yml
 	EndProjectSection
 EndProject
 Global
